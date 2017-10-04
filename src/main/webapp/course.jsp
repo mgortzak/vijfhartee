@@ -6,7 +6,14 @@ ID: ${course.id}<br/>
 Name: ${course.name}<br/>
 Description: ${course.description}<br/>
 Duration: ${course.duration}<br/>
-Price: ${course.price} euro
+Price: ${course.price} euro<br/>
+Categories:
+<ul>
+    <c:forEach var="category" items="${course.categories}">
+        <li>${category.description}</li>
+    </c:forEach>
+</ul>
+
 </body>
 
 </html>

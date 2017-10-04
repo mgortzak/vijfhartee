@@ -3,6 +3,9 @@ package nl.vijfhart.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Category {
@@ -10,6 +13,7 @@ public class Category {
     private long id;
     private String name;
     private String description;
+    private List<Course> courses = new ArrayList<>();
 
     @Id
     @GeneratedValue
@@ -37,12 +41,12 @@ public class Category {
         this.description = description;
     }
 
-    @Override
-    public String toString() {
-        return "Category{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+    @ManyToMany(mappedBy = "categories")
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
     }
 }

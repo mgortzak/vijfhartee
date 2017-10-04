@@ -1,5 +1,6 @@
 package nl.vijfhart.servlet;
 
+import nl.vijfhart.dao.CategoryDao;
 import nl.vijfhart.dao.CourseDao;
 import nl.vijfhart.model.Course;
 
@@ -17,6 +18,9 @@ public class AddCourseServlet extends HttpServlet {
     @EJB
     private CourseDao courseDao;
 
+    @EJB
+    private CategoryDao categoryDao;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("add_course.jsp").forward(request, response);
@@ -29,6 +33,9 @@ public class AddCourseServlet extends HttpServlet {
         course.setDescription(request.getParameter("description"));
         course.setDuration(Integer.parseInt(request.getParameter("duration")));
         course.setPrice(Integer.parseInt(request.getParameter("price")));
+
+        course.getCategories().add(categoryDao.find(101L));
+        course.getCategories().add(categoryDao.find(202L));
 
         courseDao.insert(course);
 

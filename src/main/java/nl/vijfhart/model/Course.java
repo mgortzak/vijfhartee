@@ -1,6 +1,8 @@
 package nl.vijfhart.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "CURSUS")
@@ -11,6 +13,7 @@ public class Course {
     private String description;
     private int duration;
     private int price;
+    private List<Category> categories = new ArrayList<>();
 
     public Course() {
     }
@@ -61,14 +64,12 @@ public class Course {
         this.price = prijs;
     }
 
-    @Override
-    public String toString() {
-        return "Course{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", duration=" + duration +
-                ", price=" + price +
-                '}';
+    @ManyToMany
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
 }
