@@ -3,20 +3,19 @@ package nl.vijfhart.servlet;
 import nl.vijfhart.dao.CursusDao;
 import nl.vijfhart.model.Cursus;
 
-import javax.annotation.Resource;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
 import java.io.IOException;
 
 @WebServlet("/nieuwe_cursus_bevestig")
 public class NieuweCursusBevestigServlet extends HttpServlet {
 
-    @Resource(name = "jdbc/vijfhartds")
-    private DataSource dataSource;
+    @EJB
+    private CursusDao cursusDao;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,12 +30,9 @@ public class NieuweCursusBevestigServlet extends HttpServlet {
         cursus.setDuur(Integer.parseInt(request.getParameter("duur")));
         cursus.setPrijs(Integer.parseInt(request.getParameter("prijs")));
 
-        int id = CursusDao.INSTANCE.insert(dataSource, cursus);
-        if (id >= 0) {
-            request.setAttribute("cursus", CursusDao.INSTANCE.get(dataSource, id));
-        }
+        cursusDao.insert(cursus);
 
+        request.setAttribute("cursus", cursus);
         request.getRequestDispatcher("cursus.jsp").forward(request, response);
     }
-
 }

@@ -1,6 +1,11 @@
 package nl.vijfhart.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Cursus {
+
     private int id;
     private String naam;
     private String omschrijving;
@@ -10,6 +15,7 @@ public class Cursus {
     public Cursus() {
     }
 
+    @Id
     public int getId() {
         return id;
     }

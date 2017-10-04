@@ -2,91 +2,38 @@ package nl.vijfhart.dao;
 
 import nl.vijfhart.model.Cursus;
 
-import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
-public enum CursusDao {
-    INSTANCE;
+@Stateless
+public class CursusDao {
 
-    public List<Cursus> findAll(DataSource dataSource) {
-        try {
-            try (Connection connection = dataSource.getConnection();
-                 Statement statement = connection.createStatement()) {
+    @PersistenceContext
+    private EntityManager entityManager;
 
-                ResultSet resultSet = statement.executeQuery("SELECT * FROM CURSUS ORDER BY OMSCHRIJVING");
 
-                List<Cursus> cursusList = new ArrayList<>();
-                while (resultSet.next()) {
-                    Cursus cursus = new Cursus();
-                    cursus.setId(resultSet.getInt("id"));
-                    cursus.setNaam(resultSet.getString("naam"));
-                    cursus.setOmschrijving(resultSet.getString("omschrijving"));
-                    cursus.setDuur(resultSet.getInt("duur"));
-                    cursus.setPrijs(resultSet.getInt("prijs"));
+    public List<Cursus> findAll() {
 
-                    cursusList.add(cursus);
-                }
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Cursus> criteriaQuery = criteriaBuilder.createQuery(Cursus.class);
+        Root<Cursus> cursusRoot = criteriaQuery.from(Cursus.class);
+        criteriaQuery.select(cursusRoot);
+        criteriaQuery.orderBy(criteriaBuilder.asc(cursusRoot.get(cursusRoot.getModel().getSingularAttribute("naam"))));
 
-                return cursusList;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace(System.err);
-            return new ArrayList<>();
-        }
+        return entityManager.createQuery(criteriaQuery).getResultList();
     }
 
-    public int insert(DataSource dataSource, Cursus cursus) {
-        try {
-            try (Connection connection = dataSource.getConnection();
-                 Statement statement = connection.createStatement()) {
-
-                statement.executeUpdate(
-                        "INSERT INTO CURSUS VALUES (DEFAULT, " + cursus.getDuur() + ", '" + cursus.getNaam() + "', '" + cursus.getOmschrijving() + "', " + cursus.getPrijs() + ")",
-                        Statement.RETURN_GENERATED_KEYS
-                ); // TODO jaja, sql injection ftw!
-
-                ResultSet keys = statement.getGeneratedKeys();
-                if (keys.next()) {
-                    return keys.getInt(1);
-                } else {
-                    return -1;
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return -1;
-        }
+    public void insert(Cursus cursus) {
+        entityManager.persist(cursus);
     }
 
 
-    public Cursus get(DataSource dataSource, int id) {
-        try {
-            try (Connection connection = dataSource.getConnection();
-                 Statement statement = connection.createStatement()) {
-
-                ResultSet resultSet = statement.executeQuery("SELECT * FROM CURSUS WHERE ID = " + id); // TODO jaja, sql injection ftw!
-
-                if (resultSet.next()) {
-                    Cursus cursus = new Cursus();
-                    cursus.setId(resultSet.getInt("id"));
-                    cursus.setNaam(resultSet.getString("naam"));
-                    cursus.setOmschrijving(resultSet.getString("omschrijving"));
-                    cursus.setDuur(resultSet.getInt("duur"));
-                    cursus.setPrijs(resultSet.getInt("prijs"));
-
-                    return cursus;
-                } else {
-                    return null;
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace(System.err);
-            return null;
-        }
+    public Cursus find(int id) {
+        return entityManager.find(Cursus.class, id);
     }
 }
