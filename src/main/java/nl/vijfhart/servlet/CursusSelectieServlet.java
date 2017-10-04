@@ -13,7 +13,7 @@ import java.io.IOException;
 
 @WebServlet(value = "/cursussen", loadOnStartup = 1)
 public class CursusSelectieServlet extends HttpServlet {
-    @Resource(name = "vijfhartds")
+    @Resource(name = "jdbc/vijfhartds")
     private DataSource dataSource;
 
     @Override

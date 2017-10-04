@@ -15,7 +15,7 @@ import java.io.IOException;
 @WebServlet("/nieuwe_cursus_bevestig")
 public class NieuweCursusBevestigServlet extends HttpServlet {
 
-    @Resource(name = "vijfhartds")
+    @Resource(name = "jdbc/vijfhartds")
     private DataSource dataSource;
 
     @Override
