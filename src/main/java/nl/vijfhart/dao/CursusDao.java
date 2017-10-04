@@ -23,7 +23,7 @@ public class CursusDao {
         CriteriaQuery<Cursus> criteriaQuery = criteriaBuilder.createQuery(Cursus.class);
         Root<Cursus> cursusRoot = criteriaQuery.from(Cursus.class);
         criteriaQuery.select(cursusRoot);
-        criteriaQuery.orderBy(criteriaBuilder.asc(cursusRoot.get(cursusRoot.getModel().getSingularAttribute("naam"))));
+        criteriaQuery.orderBy(criteriaBuilder.asc(cursusRoot.get(cursusRoot.getModel().getSingularAttribute("omschrijving"))));
 
         return entityManager.createQuery(criteriaQuery).getResultList();
     }
