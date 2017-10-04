@@ -29,7 +29,7 @@ public class CourseDao {
     }
 
     public void insert(Course course) {
-        entityManager.persist(course);
+        entityManager.merge(course);
     }
 
 

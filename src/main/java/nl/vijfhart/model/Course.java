@@ -64,7 +64,7 @@ public class Course {
         this.price = prijs;
     }
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     public List<Category> getCategories() {
         return categories;
     }

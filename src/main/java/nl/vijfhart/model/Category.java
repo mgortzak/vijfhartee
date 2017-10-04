@@ -1,9 +1,6 @@
 package nl.vijfhart.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +38,7 @@ public class Category {
         this.description = description;
     }
 
-    @ManyToMany(mappedBy = "categories")
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "categories")
     public List<Course> getCourses() {
         return courses;
     }

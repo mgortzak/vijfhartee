@@ -29,7 +29,7 @@ public class CategoryDao {
     }
 
     public void insert(Category category) {
-        entityManager.persist(category);
+        entityManager.merge(category);
     }
 
 
