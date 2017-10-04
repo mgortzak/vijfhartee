@@ -32,7 +32,6 @@ public class NieuweCursusBevestigServlet extends HttpServlet {
         cursus.setPrijs(Integer.parseInt(request.getParameter("prijs")));
 
         int id = CursusDao.INSTANCE.insert(dataSource, cursus);
-        System.out.println("id = " + id);
         if (id >= 0) {
             request.setAttribute("cursus", CursusDao.INSTANCE.get(dataSource, id));
         }
