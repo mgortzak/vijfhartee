@@ -49,4 +49,13 @@ public class Category {
     public void setCourses(List<Course> courses) {
         this.courses = courses;
     }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

@@ -72,4 +72,15 @@ public class Course {
     public void setCategories(List<Category> categories) {
         this.categories = categories;
     }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", duration=" + duration +
+                ", price=" + price +
+                '}';
+    }
 }
