@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="http://ws.vijfhart.nl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://ws.vijfhart.nl/"
+             name="HelloWorldImplService">
+    <types></types>
+    <message name="getHelloWorldAsString">
+        <part name="arg0" type="xsd:string"></part>
+    </message>
+    <message name="getHelloWorldAsStringResponse">
+        <part name="return" type="xsd:string"></part>
+    </message>
+    <portType name="HelloWorld">
+        <operation name="getHelloWorldAsString" parameterOrder="arg0">
+            <input message="tns:getHelloWorldAsString"></input>
+            <output message="tns:getHelloWorldAsStringResponse"></output>
+        </operation>
+    </portType>
+    <binding name="HelloWorldImplPortBinding" type="tns:HelloWorld">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"
+                      style="rpc"></soap:binding>
+        <operation name="getHelloWorldAsString">
+            <soap:operation soapAction=""></soap:operation>
+            <input>
+                <soap:body use="literal" namespace="http://ws.vijfhart.nl"></soap:body>
+            </input>
+            <output>
+                <soap:body use="literal" namespace="http://ws.vijfhart.nl/"></soap:body>
+            </output>
+        </operation>
+
+    </binding>
+
+    <service name="/ws/hello/HelloWorldWebService">
+        <port name="HelloWorldImplPort" binding="tns:HelloWorldImplPortBinding">
+            <soap:address location="/webservice/hello"></soap:address>
+        </port>
+    </service>
+</definitions>
