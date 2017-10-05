@@ -3,7 +3,7 @@ package nl.vijfhart.ws;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 
-@WebService
+@WebService(serviceName = "MyHelloService")
 public class HelloImpl {
 
     public HelloImpl() {
