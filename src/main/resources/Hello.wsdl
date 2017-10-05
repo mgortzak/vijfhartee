@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-             xmlns:tns="http://ws.vijfhart.nl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-             xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://ws.vijfhart.nl/"
+             xmlns:tns="http://ws.vijfhart.nl/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             targetNamespace="http://ws.vijfhart.nl/"
              name="HelloWorldImplService">
     <types></types>
     <message name="getHelloWorldAsString">
-        <part name="arg0" type="xsd:string"></part>
+        <part name="text" type="xsd:string"></part>
     </message>
     <message name="getHelloWorldAsStringResponse">
         <part name="return" type="xsd:string"></part>
     </message>
     <portType name="HelloWorld">
-        <operation name="getHelloWorldAsString" parameterOrder="arg0">
+        <operation name="getHelloWorldAsString" parameterOrder="text">
             <input message="tns:getHelloWorldAsString"></input>
             <output message="tns:getHelloWorldAsStringResponse"></output>
         </operation>
