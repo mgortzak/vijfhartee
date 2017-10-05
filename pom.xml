@@ -175,7 +175,7 @@
                                 <wsdlFile>${basedir}/src/main/resources/Hello.wsdl</wsdlFile>
                             </wsdlFiles>
                             <genJWS>true</genJWS>
-                            <wsdlLocation>http://localhost:7003/VijfhartWebapp/ws/hello/HelloWorldService?wsdl
+                            <wsdlLocation>http://localhost:7003/VijfhartWebapp/ws/hello/HelloWorldWebService?wsdl
                             </wsdlLocation>
                         </configuration>
                     </execution>
