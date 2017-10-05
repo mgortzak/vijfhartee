@@ -33,7 +33,7 @@
 
     </binding>
 
-    <service name="/ws/hello/HelloWorldWebService">
+    <service name="/ws/hello/HelloWorldService">
         <port name="HelloWorldImplPort" binding="tns:HelloWorldImplPortBinding">
             <soap:address location="/webservice/hello"></soap:address>
         </port>
