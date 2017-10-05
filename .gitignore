@@ -28,6 +28,3 @@ hs_err_pid*
 *.iws
 *.ipr
 *.iml
-
-# Generated files
-/src/main/java/nl/vijfhart/ws/*.java

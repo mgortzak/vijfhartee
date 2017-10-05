@@ -1,7 +1,5 @@
 
-package nl.vijfhart.soap;
-
-import nl.vijfhart.ws.HelloWorld;
+package nl.vijfhart.ws;
 
 import javax.jws.WebService;
 import javax.xml.ws.BindingType;
