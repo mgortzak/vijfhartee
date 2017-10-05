@@ -180,16 +180,27 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>wsgen</id>
+                        <id>wsgen HelloImpl</id>
                         <goals>
                             <goal>wsgen</goal>
                         </goals>
                         <phase>process-classes</phase>
                         <configuration>
-                            <verbose>false</verbose>
                             <inlineSchemas>true</inlineSchemas>
                             <genWsdl>true</genWsdl>
                             <sei>nl.vijfhart.ws.HelloImpl</sei>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>wsgen CourseSoapService</id>
+                        <goals>
+                            <goal>wsgen</goal>
+                        </goals>
+                        <phase>process-classes</phase>
+                        <configuration>
+                            <inlineSchemas>true</inlineSchemas>
+                            <genWsdl>true</genWsdl>
+                            <sei>nl.vijfhart.ws.CourseSoapService</sei>
                         </configuration>
                     </execution>
                     <!--Deploy the application to the server-->
