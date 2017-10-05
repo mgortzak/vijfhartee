@@ -10,6 +10,6 @@ public class HelloImpl {
     }
 
     public String sayHello(@WebParam(name = "someName") String someName) {
-        return String.format("Hello %s!", someName);
+        return String.format("And a special hello to %s!", someName);
     }
 }

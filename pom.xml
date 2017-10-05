@@ -179,6 +179,19 @@
                             </wsdlLocation>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>wsgen</id>
+                        <goals>
+                            <goal>wsgen</goal>
+                        </goals>
+                        <phase>process-classes</phase>
+                        <configuration>
+                            <verbose>false</verbose>
+                            <inlineSchemas>true</inlineSchemas>
+                            <genWsdl>true</genWsdl>
+                            <sei>nl.vijfhart.ws.HelloImpl</sei>
+                        </configuration>
+                    </execution>
                     <!--Deploy the application to the server-->
                     <execution>
                         <phase>pre-integration-test</phase>
