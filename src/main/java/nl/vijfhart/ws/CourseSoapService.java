@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
-@WebService(serviceName = "MyCourses")
+@WebService(serviceName = "CourseSoap")
 public class CourseSoapService {
     @EJB
     private CourseDao courseDao;
