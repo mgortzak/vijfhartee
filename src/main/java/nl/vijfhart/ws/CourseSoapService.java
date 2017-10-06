@@ -1,6 +1,7 @@
 package nl.vijfhart.ws;
 
 import nl.vijfhart.dao.CourseDao;
+import nl.vijfhart.model.Category;
 import nl.vijfhart.model.Course;
 
 import javax.ejb.EJB;
@@ -16,14 +17,13 @@ public class CourseSoapService {
     private CourseDao courseDao;
 
     public List<Course> fetchCourses() {
-        Course course = new Course();
-        course.setName("foo");
-        course.setDescription("bar");
 
-        List<Course> list = new ArrayList<>();
-        list.add(course);
-
-        return list;
-//        return courseDao.findAll();
+        List<Course> courses = courseDao.findAll();
+        for (Course course : courses) {
+            for (Category category : course.getCategories()) {
+                category.setCourses(new ArrayList<>());
+            }
+        }
+        return courses;
     }
 }
