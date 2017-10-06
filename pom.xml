@@ -203,6 +203,18 @@
                             <sei>nl.vijfhart.ws.CourseSoapService</sei>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>wsgen CategorySoapService</id>
+                        <goals>
+                            <goal>wsgen</goal>
+                        </goals>
+                        <phase>process-classes</phase>
+                        <configuration>
+                            <inlineSchemas>true</inlineSchemas>
+                            <genWsdl>true</genWsdl>
+                            <sei>nl.vijfhart.ws.CategorySoapService</sei>
+                        </configuration>
+                    </execution>
                     <!--Deploy the application to the server-->
                     <execution>
                         <phase>pre-integration-test</phase>
