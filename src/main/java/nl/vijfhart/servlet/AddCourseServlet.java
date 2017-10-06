@@ -1,7 +1,7 @@
 package nl.vijfhart.servlet;
 
+import nl.vijfhart.controller.CourseController;
 import nl.vijfhart.dao.CategoryDao;
-import nl.vijfhart.dao.CourseDao;
 import nl.vijfhart.model.Course;
 
 import javax.ejb.EJB;
@@ -16,7 +16,7 @@ import java.io.IOException;
 public class AddCourseServlet extends HttpServlet {
 
     @EJB
-    private CourseDao courseDao;
+    private CourseController courseController;
 
     @EJB
     private CategoryDao categoryDao;
@@ -37,7 +37,7 @@ public class AddCourseServlet extends HttpServlet {
         course.getCategories().add(categoryDao.find(101L));
         course.getCategories().add(categoryDao.find(202L));
 
-        courseDao.insert(course);
+        courseController.insert(course);
 
         request.setAttribute("course", course);
         request.getRequestDispatcher("course.jsp").forward(request, response);
