@@ -6,6 +6,7 @@ import nl.vijfhart.model.Course;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.jws.WebParam;
 import javax.jws.WebService;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,5 +26,11 @@ public class CategorySoapService {
             }
         }
         return categories;
+    }
+
+    public Category addCategory(@WebParam(name = "category") Category category) {
+        categoryDao.insert(category);
+
+        return category;
     }
 }
