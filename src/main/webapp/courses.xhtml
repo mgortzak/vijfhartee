@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+
+<ui:composition template="template.xhtml">
+    <ui:define name="title">
+        <h:outputText value="Courses Overview"></h:outputText>
+    </ui:define>
+
+    <ui:define name="header">
+        <!--<div class="page-header">-->
+        <div>
+            <h2>Courses</h2>
+            <p class="lead">A list of courses.</p>
+        </div>
+    </ui:define>
+
+    <ui:define name="body">
+        <div class="well">
+            <h:dataTable value="#{courseBean.courses}" var="course">
+
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">Name</f:facet>
+                    <!-- row record -->
+                    #{course.name}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Description</f:facet>
+                    #{course.description}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Duration</f:facet>
+                    #{course.duration}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Price</f:facet>
+                    #{course.price}
+                </h:column>
+
+            </h:dataTable>
+        </div>
+    </ui:define>
+
+    <ui:define name="footer">
+        <footer>
+            <p>&copy; Company 2015</p>
+        </footer>
+    </ui:define>
+</ui:composition>
+</html>
+
