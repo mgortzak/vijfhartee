@@ -33,4 +33,14 @@ public class CourseController {
     public Course find(int id) {
         return courseDao.find(id);
     }
+
+    public Course create(String name, String description, int duration, int price) {
+        Course course = new Course();
+        course.setName(name);
+        course.setDescription(description);
+        course.setDuration(duration);
+        course.setPrice(price);
+
+        return course;
+    }
 }

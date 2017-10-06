@@ -28,11 +28,13 @@ public class AddCourseServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Course course = new Course();
-        course.setName(request.getParameter("name"));
-        course.setDescription(request.getParameter("description"));
-        course.setDuration(Integer.parseInt(request.getParameter("duration")));
-        course.setPrice(Integer.parseInt(request.getParameter("price")));
+
+        Course course = courseController.create(
+                request.getParameter("name"),
+                request.getParameter("description"),
+                Integer.parseInt(request.getParameter("duration")),
+                Integer.parseInt(request.getParameter("price"))
+        );
 
         course.getCategories().add(categoryDao.find(101L));
         course.getCategories().add(categoryDao.find(202L));
