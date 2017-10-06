@@ -1,0 +1,293 @@
+{
+  "variables": [],
+  "info": {
+    "name": "Vijfhart",
+    "_postman_id": "aa083707-a221-3bd6-f7ad-6a8e559b2a18",
+    "description": "",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "HelloWorldService (SOAP)",
+      "request": {
+        "url": "http://localhost:7003/VijfhartWebapp/ws/hello/HelloWorldService",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/xml",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ns=\"http://ws.vijfhart.nl/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n    <soap:Header/>\r\n    <soap:Body>\r\n        <ns:getHelloWorldAsString>\r\n            <text xsi:type=\"xsd:string\">mark</text>\r\n        </ns:getHelloWorldAsString>\r\n    </soap:Body>\r\n</soap:Envelope>"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "MyHelloWorldService (SOAP)",
+      "request": {
+        "url": {
+          "raw": "http://localhost:7003/VijfhartWebapp/HelloImplService?wsdl",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "7003",
+          "path": [
+            "VijfhartWebapp",
+            "HelloImplService"
+          ],
+          "query": [
+            {
+              "key": "wsdl",
+              "value": "",
+              "equals": false,
+              "description": ""
+            }
+          ],
+          "variable": []
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/xml",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n    <soap:Header/>\r\n    <soap:Body>\r\n        <ns1:sayHello xmlns:ns1=\"http://ws.vijfhart.nl/\">\r\n            <someName>piet</someName>\r\n        </ns1:sayHello>\r\n    </soap:Body>\r\n</soap:Envelope>"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "Fetch Courses (SOAP)",
+      "request": {
+        "url": {
+          "raw": "http://localhost:7003/CourseSoapService/CourseSoap?wsdl",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "7003",
+          "path": [
+            "CourseSoapService",
+            "CourseSoap"
+          ],
+          "query": [
+            {
+              "key": "wsdl",
+              "value": "",
+              "equals": false,
+              "description": ""
+            }
+          ],
+          "variable": []
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/xml",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ns=\"http://ws.vijfhart.nl/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n    <soap:Header/>\r\n    <soap:Body>\r\n        <ns:fetchCourses/>\r\n    </soap:Body>\r\n</soap:Envelope>"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "Fetch Courses (REST)",
+      "request": {
+        "url": "http://localhost:7003/VijfhartWebapp/resources/course",
+        "method": "GET",
+        "header": [],
+        "body": {},
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "Fetch Categories (SOAP)",
+      "request": {
+        "url": {
+          "raw": "http://localhost:7003/CategorySoapService/CategorySoap?WSDL",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "7003",
+          "path": [
+            "CategorySoapService",
+            "CategorySoap"
+          ],
+          "query": [
+            {
+              "key": "WSDL",
+              "value": "",
+              "equals": false,
+              "description": ""
+            }
+          ],
+          "variable": []
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/xml",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ns=\"http://ws.vijfhart.nl/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n    <soap:Header/>\r\n    <soap:Body>\r\n        <ns:fetchCategories/>\r\n    </soap:Body>\r\n</soap:Envelope>"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "Fetch Categories (REST)",
+      "request": {
+        "url": "http://localhost:7003/VijfhartWebapp/resources/category",
+        "method": "GET",
+        "header": [],
+        "body": {},
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "Add Category (SOAP)",
+      "request": {
+        "url": {
+          "raw": "http://localhost:7003/CategorySoapService/CategorySoap?WSDL",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "7003",
+          "path": [
+            "CategorySoapService",
+            "CategorySoap"
+          ],
+          "query": [
+            {
+              "key": "WSDL",
+              "value": "",
+              "equals": false,
+              "description": ""
+            }
+          ],
+          "variable": []
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/xml",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n    <soap:Body>\r\n        <ns1:addCategory xmlns:ns1=\"http://ws.vijfhart.nl/\">\r\n            <category>\r\n            \t<id>551</id>\r\n                <description>Other stuff too</description>\r\n                <name>other</name>\r\n            </category>\r\n        </ns1:addCategory>\r\n    </soap:Body>\r\n</soap:Envelope>\r\n"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "Add Category (REST)",
+      "request": {
+        "url": "http://localhost:7003/VijfhartWebapp/resources/category",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"description\": \"Web Services (SOAP/REST)\",\n    \"name\": \"web\"\n}"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "Add Course (SOAP)",
+      "request": {
+        "url": {
+          "raw": "http://localhost:7003/CourseSoapService/CourseSoap?wsdl",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "7003",
+          "path": [
+            "CourseSoapService",
+            "CourseSoap"
+          ],
+          "query": [
+            {
+              "key": "wsdl",
+              "value": "",
+              "equals": false,
+              "description": ""
+            }
+          ],
+          "variable": []
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/xml",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n    <soap:Body>\r\n        <ns1:addCourse xmlns:ns1=\"http://ws.vijfhart.nl/\">\r\n            <course>\r\n                <categories>\r\n\t\t\t\t\t<id>51</id>\r\n\t\t\t\t\t<description>Old stuff</description>\r\n\t\t\t\t\t<name>old</name>\r\n                </categories>\r\n                <categories>\r\n\t\t\t\t\t<id>101</id>\r\n\t\t\t\t\t<description>New stuff</description>\r\n\t\t\t\t\t<name>new</name>\r\n                </categories>\r\n                <id>606</id>\r\n                <description>Some other course</description>\r\n                <duration>10</duration>\r\n                <name>other</name>\r\n                <price>1550</price>\r\n            </course>\r\n        </ns1:addCourse>\r\n    </soap:Body>\r\n</soap:Envelope>\r\n"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "Add Course (REST)",
+      "request": {
+        "url": "http://localhost:7003/VijfhartWebapp/resources/course",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"categories\": [\n    \t{\n    \t\t\"id\": 652,\n    \t    \"description\": \"Web Services (SOAP/REST)\",\n    \t\t\"name\": \"web\"\n    \t}\n\t],\n    \"description\": \"REST for dummies!!\",\n    \"id\": 651,\n    \"duration\": 3,\n    \"name\": \"rest\",\n    \"price\": 475\n}"
+        },
+        "description": ""
+      },
+      "response": []
+    }
+  ]
+}
