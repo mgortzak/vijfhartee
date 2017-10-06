@@ -1,6 +1,6 @@
 package nl.vijfhart.servlet;
 
-import nl.vijfhart.dao.CategoryDao;
+import nl.vijfhart.controller.CategoryController;
 import nl.vijfhart.model.Category;
 
 import javax.ejb.EJB;
@@ -15,7 +15,7 @@ import java.io.IOException;
 public class AddCategoryServlet extends HttpServlet {
 
     @EJB
-    private CategoryDao categoryDao;
+    private CategoryController categoryController;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,7 +29,7 @@ public class AddCategoryServlet extends HttpServlet {
         category.setName(request.getParameter("name"));
         category.setDescription(request.getParameter("description"));
 
-        categoryDao.insert(category);
+        categoryController.insert(category);
 
         request.setAttribute("category", category);
         request.getRequestDispatcher("category.jsp").forward(request, response);

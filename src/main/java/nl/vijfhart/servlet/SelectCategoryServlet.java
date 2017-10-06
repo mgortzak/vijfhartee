@@ -1,6 +1,6 @@
 package nl.vijfhart.servlet;
 
-import nl.vijfhart.dao.CategoryDao;
+import nl.vijfhart.controller.CategoryController;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -13,17 +13,17 @@ import java.io.IOException;
 @WebServlet(value = "/categories")
 public class SelectCategoryServlet extends HttpServlet {
     @EJB
-    private CategoryDao categoryDao;
+    private CategoryController categoryController;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("categoryList", categoryDao.findAll());
+        request.setAttribute("categoryList", categoryController.findAll());
         request.getRequestDispatcher("categories.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("category", categoryDao.find(Long.parseLong(request.getParameter("id"))));
+        request.setAttribute("category", categoryController.find(Long.parseLong(request.getParameter("id"))));
         request.getRequestDispatcher("category.jsp").forward(request, response);
     }
 }
