@@ -6,6 +6,7 @@ import nl.vijfhart.model.Course;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.jws.WebParam;
 import javax.jws.WebService;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,5 +26,11 @@ public class CourseSoapService {
             }
         }
         return courses;
+    }
+
+    public Course addCourse(@WebParam(name = "course") Course course) {
+        courseDao.insert(course);
+
+        return course;
     }
 }
